@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BaiThucHanh5.Models.HoaDon>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Hóa đơn</h2>
+
+<p>
+    @Html.ActionLink("Thêm hóa đơn", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayLapHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nhanvien.HoNV)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("index", "CTHDs", new {mahd = item.MaHD})">
+                    @Html.DisplayFor(modelItem => item.MaHD)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLapHD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nhanvien.HoNV)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaHD }) |
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.MaHD }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaHD })
+            </td>
+        </tr>
+    }
+</table>

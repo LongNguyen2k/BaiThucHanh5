@@ -1,0 +1,71 @@
+﻿@model BaiThucHanh5.Models.SanPham
+@using BaiThucHanh5.Models;
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi Tiết Sản phẩm </h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <!-- DisplayName For được dùng để hiển thị tên-->
+           Tên Sản Phẩm 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            Đơn vị Tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donvitinh)
+        </dd>
+
+        <dt>
+            Đơn Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dongia)
+        </dd>
+
+        <dt>
+           Loại Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSP.TenLoaiSP)
+        </dd>
+        <dt>
+            Hình Ảnh
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.HinhSP)*@ 
+            @* đường dẫn , dòng chữ nếu ko có đường dẫn , độ cao ảnh *@
+            @Html.Image("../../" + @Model.HinhSP, "alt Hình SP", "100")
+        </dd>
+        <dt>
+           
+        </dt>
+
+        <dd>
+         <br />
+            <a class="btn btn-success btn-sm" href="@Url.Action("AddToCart","GioHang",new {MaSp = Model.MaSP})">
+                <span class="glyphicon glyphicon-shopping-cart"></span>Thêm Vào Giỏ
+            </a>
+            <a class="btn btn-success btn-sm" href="@Url.Action("Index","Home",new {MaSp = Model.MaSP})">
+                Quay Lại
+            </a>
+        </dd>
+
+        
+
+    </dl>
+</div>
